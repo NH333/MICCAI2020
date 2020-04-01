@@ -1,0 +1,38 @@
+GNN_HOME=../../../graphnn
+
+include $(GNN_HOME)/make_common
+
+lib_dir = $(GNN_HOME)/build_cpuonly/lib
+gnn_lib = $(lib_dir)/libgnn.a
+
+include_dirs = $(CUDA_HOME)/include $(MKL_ROOT)/include $(GNN_HOME)/include ./include
+
+CXXFLAGS += $(addprefix -I,$(include_dirs)) -Wno-unused-local-typedef
+CXXFLAGS += -fPIC
+cpp_files = $(shell $(FIND) src/lib -name "*.cpp" -printf "%P\n")
+cxx_obj_files = $(subst .cpp,.o,$(cpp_files))
+
+objs = $(addprefix build/lib/,$(cxx_obj_files))
+DEPS = $(objs:.o=.d)
+
+target = src/mvc_lib.out                                             
+target_dep = $(addsuffix .d,$(target))
+
+.PRECIOUS: build/lib/%.o                                            
+
+all: $(target)
+
+src/mvc_lib.out: src/mvc_lib.cpp $(gnn_lib) $(objs)
+	$(dir_guard)
+	$(CXX) $(CXXFLAGS) -MMD -g -o $@ $(filter %.cpp %.o, $^) -L$(lib_dir) -lgnn $(LDFLAGS) -I /home/chenanqi/eigen3/
+
+DEPS += $(target_dep)
+
+build/lib/%.o: src/lib/%.cpp
+	$(dir_guard)
+	$(CXX) $(CXXFLAGS) -MMD -c -g -o $@ $(filter %.cpp, $^) -I /home/chenanqi/eigen3/
+
+clean:
+	rm -rf build
+
+-include $(DEPS)
