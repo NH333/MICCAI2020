@@ -1,6 +1,11 @@
 [![](https://img.shields.io/badge/conference-MICCAI-yellowgreen)](https://www.miccai2020.org/en/) ![](https://img.shields.io/badge/version-1.0.0-blue) ![](https://img.shields.io/badge/status-submitted-orange)
 
-工作整理
+工作整理  
+
+## 工作概述
+A plethora of neuroscience studies find that connector hub nodes play a key role in regulating multiple modules and supporting brain functions such as consciousness and cognition, due to its critical topological location in the net-work. Current approaches mainly rely on the hand-crafted attributes (aka. graph embedding at each node) from the domain knowledge of network neuroscience such as high connectivity degree to identify connector hub nodes. However, sim-ple ranking heuristic based on the pre-defined attributes has limited power to characterize the complex network topology, which often results in less accurate hub identification results. Although graph theory allows us to find connector hubs with a greater mathematical insight, the large scale of brain network often compromises the well-defined optimization into a local and sub-optimal solution. To overcome these limitations, we propose a joint graph embedding and hub identification solution in a reinforcement learning framework to discover the un-precedented heuristics from the existing knowledge of network neuroscience and graph theory, which allows us to outperform the current state-of-the-art hub iden-tification methods. We have achieved more reliable and replicable hub identifica-tion results on both simulated and real brain network data, suggesting the high applicability to various network analysis studies in neuroscience and neuroimag-ing fields.
+
+
 
 ## 运行环境
 * Linux
