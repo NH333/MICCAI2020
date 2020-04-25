@@ -45,3 +45,16 @@ source /home/chenanqi/intel/parallel_studio_xe_2019.5.075/bin/psxevars.sh
 
 如果还不能解决，可以参考(https://github.com/davisking/dlib/issues/587)
 
+### 后台跑多个程序使用命令screen
+http://man.linuxde.net/screen  
+先screen -S xx(窗口的名字)  
+然后运行程序 你要跑的  
+然后ctrl+a d 把当前会话切后台运行  
+再关闭就没问题了
+
+#### 最后一些问题的解决方案可以在原作者的两个项目中issue部分找到解答  
+https://github.com/Hanjun-Dai/graph_comb_opt/issues  
+https://github.com/Hanjun-Dai/graphnn/issues  
+
+
+
