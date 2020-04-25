@@ -1,5 +1,4 @@
-# Discovering Unprecedented Heuristics for Hub Identification by Joint Graph Embedding and Reinforcement Learning
-MICCAI2020 [![](https://img.shields.io/badge/conference-MICCAI-yellowgreen)](https://www.miccai2020.org/en/) ![](https://img.shields.io/badge/version-1.0.0-blue) ![](https://img.shields.io/badge/status-submitted-orange)
+[![](https://img.shields.io/badge/conference-MICCAI-yellowgreen)](https://www.miccai2020.org/en/) ![](https://img.shields.io/badge/version-1.0.0-blue) ![](https://img.shields.io/badge/status-submitted-orange)
 
 工作整理
 
