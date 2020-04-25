@@ -27,7 +27,7 @@ MICCAI2020 [![](https://img.shields.io/badge/conference-MICCAI-yellowgreen)](htt
 - Simulator模块主要是实现整个训练过程的整合
 
 ## 常用工具和配置环境遇到的一些问题总结
-### Gdb调试相关操作
+### GDB调试相关操作
 set print object on 可以显示派生类的成员
 
 set print pretty on 树形打印
