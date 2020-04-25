@@ -7,8 +7,41 @@ MICCAI2020 [![](https://img.shields.io/badge/conference-MICCAI-yellowgreen)](htt
 * Linux
 * C++
 
-## 配置gnn静态链接库 [gnn](https://github.com/Hanjun-Dai/graphnn)
+## 配置GNN静态链接库 [GNN](https://github.com/Hanjun-Dai/graphnn)
 - 需要装intel的mkl，tbb数学函数库，默认装在根目录下的 /opt/intel/mkl
 - 需改makefile文件，把对应库的路径改成当前自己电脑下这些库的路径
 - 参考链接，进行编译，测试（由于我没有使用gpu，就把相应gpu的设置都跳过）
+
+## 配置reinforcement + graph embedding框架 [RL+GE](https://github.com/Hanjun-Dai/graph_comb_opt)
+- 需要配置一个[eigen3](https://eigen.tuxfamily.org/dox/GettingStarted.html)的矩阵计算函数库用来计算特征值，并且在对应makefile文件中添加路径
+- 核心修改的代码文件是maxcut_env模块和maxcut_lib.cpp(把主函数,读写文件,参数的设置都放到这了)
+- 修改自己的makefile文件
+
+## 代码主要功能
+以s2v_maxcut为例
+### 核心部分有几个模块
+- Config模块主要是设置一些参数
+- Graph模块主要是实现存储图的信息(节点，边，邻居)和相应的采图的一些基本操作
+- Maxcut_env模块主要是实现强化学习几个要素(初始化状态，存放行动，状态，终止条件，计算奖励)
+- Qnet模块主要是配置神经网络的结构
+- Simulator模块主要是实现整个训练过程的整合
+
+## 常用工具和配置环境遇到的一些问题总结
+### Gdb调试相关操作
+set print object on 可以显示派生类的成员
+
+set print pretty on 树形打印
+
+显示STL内容
+- (https://www.cnblogs.com/silentNight/p/5466418.html)
+- (https://sourceware.org/gdb/wiki/STLSupport?action=AttachFile&do=view&target=stl-views-1.0.3.gdb)
+
+### 配置mkl,tbb，遇到找不到相关库的问题和解决方案
+一般添加相应的环境变量到home目录下的.bashrc就能解决(添加如下三句命令)
+
+export LD_LIBRARY_PATH=/home/chenanqi/intel/mkl/lib/intel64/:$LD_LIBRARY_PATH
+exportLD_LIBRARY_PATH=/home/chenanqi/intel/tbb/lib/intel64/gcc4.7/:$LD_LIBRARY_PATH
+source /home/chenanqi/intel/parallel_studio_xe_2019.5.075/bin/psxevars.sh
+
+如果还不能解决，可以参考(https://github.com/davisking/dlib/issues/587)
 
